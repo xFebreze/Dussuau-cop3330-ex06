@@ -1,6 +1,8 @@
 package Base;
 
+import java.util.Calendar;
 import java.util.Scanner;
+import java.util.Date;
 
 /*
 UCF COP3330 Summer 2021 Assignment 1 Solution
@@ -29,10 +31,27 @@ Handle situations where the program returns a negative number by stating that th
  */
 public class App {
     public static void main(String[] args){
+        int current_year = Calendar.getInstance().getWeekYear();
+
         //scanner
         Scanner input = new Scanner(System.in);
 
         //inputs
-        System.out.print("What is your current age?");
+        System.out.print("What is your current age? ");
+        String s_age = input.nextLine();
+        System.out.print("At what age would you like to retire? ");
+        String s_retire_age = input.nextLine();
+
+        //parsing
+        int age = Integer.parseInt(s_age);
+        int retire_age = Integer.parseInt(s_retire_age);
+
+        //math
+        int retirement = retire_age - age;
+        int retirement_year = current_year + retirement;
+
+        //output
+        System.out.println("You have " + retirement + " years left until you can retire.");
+        System.out.printf("It's %d, so you can retire in %d.",current_year, retirement_year);
     }
 }
